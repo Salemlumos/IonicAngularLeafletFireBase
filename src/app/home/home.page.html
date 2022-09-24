@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Map Marker
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +9,30 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Map Marker</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div class="main-cont">
+    <div class="map-container">
+      <div class="map-frame">
+      <div id="map"></div>
+    </div>
+  </div>
+  <div class="tableList">
+    <h3>Pontos de Interesse</h3>
+    <h3 *ngIf="names.length==0 && load==false">Nenhum Marcador</h3>
+    <h3 *ngIf="names.length==0 && load==true">Carregando ...</h3>
+    <div *ngFor="let n of names">
+      <div (click)="goTo(n.loc)" class="item">
+        <div>
+          <h3 (click)="goTo(n.loc)">{{n.name}}</h3>
+        </div>
+        <div>
+            <h3>DEL</h3>
+            <h3>EDIT</h3>
+        </div>
+      </div>
+    </div>
+  </div>
   </div>
 </ion-content>
